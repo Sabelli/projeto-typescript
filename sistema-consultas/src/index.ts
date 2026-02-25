@@ -113,6 +113,20 @@ const consulta1 = criarConsulta(
   new Date(),
   350
 );
+const consulta2 = criarConsulta(
+  2,
+  medico2,
+  paciente2,
+  new Date("2026-05-30"),
+  1044
+);
+const consulta3 = criarConsulta(
+  3,
+  medico3,
+  paciente3,
+  new Date("2026-10-06"),
+  588
+);
 const consultaConfirmada = confirmarConsulta(consulta1);
 console.log("=== CONSULTA CONFIRMADA ===");
 console.log(exibirConsulta(consultaConfirmada));
@@ -120,4 +134,5 @@ console.log(exibirConsulta(consultaConfirmada));
 function listarConsultasPorStatus(
   consultas: Consulta[],
   status: StatusConsulta
+
 ): Consulta[]
