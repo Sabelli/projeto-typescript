@@ -142,3 +142,12 @@ const consultas: Consulta[] = [consulta1, consulta2, consulta3];
 
 console.log("=== LISTANDO CONSULTAS AGENDADAS ===")
 console.log(listarConsultasPorStatus(consultas, "agendada"));
+
+function listarConsultasFuturas(
+  consultas: Consulta[]
+): Consulta[] {
+    return consultas.filter(consulta => consulta.data > new Date())
+}
+
+console.log("=== LISTANDO CONSULTAS FUTURAS ===")
+console.log(listarConsultasFuturas(consultas));
