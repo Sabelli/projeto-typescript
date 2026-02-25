@@ -8,6 +8,14 @@ const cardiologia: Especialidade = {
   id: 1,
   nome: "Cardiologia",
 };
+const pediatria: Especialidade = {
+  id: 2,
+  nome: "Pediatria",
+};
+const urologia: Especialidade = {
+  id: 3,
+  nome: "Urologia",
+};
 const medico1: Medico = {
   id: 1,
   nome: "Dr. Roberto Silva",
@@ -15,11 +23,37 @@ const medico1: Medico = {
   especialidade: cardiologia,
   ativo: true,
 };
+const medico2: Medico = {
+  id: 2,
+  nome: "Dr. Cláudio Castro",
+  crm: "CRM12235",
+  especialidade: pediatria,
+  ativo: true,
+};
+const medico3: Medico = {
+  id: 3,
+  nome: "Dr. Robson",
+  crm: "CRM44235",
+  especialidade: urologia,
+  ativo: true,
+};
 const paciente1: Paciente = {
   id: 1,
   nome: "Carlos Andrade",
   cpf: "123.456.789-00",
   email: "carlos@email.com",
+};
+const paciente2: Paciente = {
+  id: 2,
+  nome: "Pedro Almeida",
+  cpf: "133.466.777-01",
+  email: "pedro@email.com",
+};
+const paciente3: Paciente = {
+  id: 3,
+  nome: "Júlio Rosa",
+  cpf: "223.467.889-11",
+  email: "julio@email.com",
 };
 
 function criarConsulta(
@@ -82,3 +116,8 @@ const consulta1 = criarConsulta(
 const consultaConfirmada = confirmarConsulta(consulta1);
 console.log("=== CONSULTA CONFIRMADA ===");
 console.log(exibirConsulta(consultaConfirmada));
+
+function listarConsultasPorStatus(
+  consultas: Consulta[],
+  status: StatusConsulta
+): Consulta[]
