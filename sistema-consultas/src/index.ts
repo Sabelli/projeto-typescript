@@ -134,5 +134,11 @@ console.log(exibirConsulta(consultaConfirmada));
 function listarConsultasPorStatus(
   consultas: Consulta[],
   status: StatusConsulta
+): Consulta[] {
+    return consultas.filter(consulta => consulta.status === status);
+}
 
-): Consulta[]
+const consultas: Consulta[] = [consulta1, consulta2, consulta3];
+
+console.log("=== LISTANDO CONSULTAS AGENDADAS ===")
+console.log(listarConsultasPorStatus(consultas, "agendada"));
