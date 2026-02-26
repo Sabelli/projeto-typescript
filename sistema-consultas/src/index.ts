@@ -80,6 +80,13 @@ function confirmarConsulta(consulta: Consulta): Consulta {
   };
 }
 
+function realizarConsulta(consulta: Consulta): Consulta {
+  return {
+    ...consulta,
+    status: "realizada",
+  };
+}
+
 function cancelarConsulta(consulta: Consulta): Consulta | null {
   if (consulta.status === "realizada") {
     return null;
@@ -118,7 +125,7 @@ const consulta2 = criarConsulta(
   medico2,
   paciente2,
   new Date("2026-05-30"),
-  1044
+  1044,
 );
 const consulta3 = criarConsulta(
   3,
@@ -126,6 +133,20 @@ const consulta3 = criarConsulta(
   paciente3,
   new Date("2026-10-06"),
   588
+);
+const consulta4 = criarConsulta(
+  4,
+  medico3,
+  paciente1,
+  new Date("2026-02-25"),
+  430
+);
+const consulta5 = criarConsulta(
+  5,
+  medico3,
+  paciente2,
+  new Date("2026-02-25"),
+  666
 );
 const consultaConfirmada = confirmarConsulta(consulta1);
 console.log("=== CONSULTA CONFIRMADA ===");
@@ -138,7 +159,7 @@ function listarConsultasPorStatus(
     return consultas.filter(consulta => consulta.status === status);
 }
 
-const consultas: Consulta[] = [consulta1, consulta2, consulta3];
+const consultas: Consulta[] = [consulta1, consulta2, consulta3, consulta4, consulta5];
 
 console.log("=== LISTANDO CONSULTAS AGENDADAS ===")
 console.log(listarConsultasPorStatus(consultas, "agendada"));
@@ -146,8 +167,19 @@ console.log(listarConsultasPorStatus(consultas, "agendada"));
 function listarConsultasFuturas(
   consultas: Consulta[]
 ): Consulta[] {
-    return consultas.filter(consulta => consulta.data > new Date())
+    return consultas.filter(consulta => consulta.data > new Date());
 }
 
 console.log("=== LISTANDO CONSULTAS FUTURAS ===")
 console.log(listarConsultasFuturas(consultas));
+
+function calcularFaturamento(
+  consultas: Consulta[]
+): number {
+    const realizadas = consultas.filter(consulta => consulta.status === "realizada");
+    const total = realizadas.reduce((acc, consulta) => acc + consulta.valor, 0);
+    return total;
+}
+
+console.log("=== FATURAMENTO ===")
+console.log(calcularFaturamento(consultas))
